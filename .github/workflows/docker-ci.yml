@@ -29,6 +29,6 @@ jobs:
         with:
           context: . # Looks for the Dockerfile in the root directory
           push: true
-          tags: ${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}
+          tags: club-malabari-web:latest
           # You can specify the Dockerfile path if it's not named 'Dockerfile'
           file: ./web/Dockerfile
