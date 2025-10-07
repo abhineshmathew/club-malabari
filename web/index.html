@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Club Malabari — Authentic Malabar Biryani & Kerala Food</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-…" crossorigin="anonymous" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            margin-right: 10px;
+            border-radius: 8px;
+        }
+
+        .content {
+            background: url('images/back.webp') center center / cover no-repeat;
+            height: 60vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .content h1 {
+            font-size: 3rem;
+        }
+
+        .menu-item {
+            margin-bottom: 2rem;
+        }
+
+        .footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 2rem 0;
+        }
+
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="./images/malabari_logo.jpg" alt="Club Malabari Logo" />
+                <span>Club Malabari</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- content / Banner -->
+    <section id="home" class="content">
+        <div class="text-center">
+            <h1>Club Malabari</h1>
+            <p>Authentic Malabar Biryani & Kerala Delicacies</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Specialties</h2>
+            <div class="row">
+
+                <div class="col-md-6 menu-item">
+                    <div class="card">
+                        <img src="./images/biriyani.webp" class="card-img-top" alt="Chicken Biryani" />
+                        <div class="card-body">
+                            <h5 class="card-title">Chicken Biryani</h5>
+                            <p class="card-text">
+                                Aromatic Malabar style chicken biryani with rich spices, ghee, and tender meat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 menu-item">
+                    <div class="card">
+                        <img src="./images/snacks.webp" class="card-img-top" alt="Kerala Snacks" />
+                        <div class="card-body">
+                            <h5 class="card-title">Kerala Snacks</h5>
+                            <p class="card-text">
+                                A delicious mix of Kerala’s favorite tea-time snacks - Cutlet, Pazham Pori, Samosa, Ela Ada, and Pazham Nirachathu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About  -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">About Us</h2>
+            <p>
+                Welcome to Club Malabari — where every bite is a journey into the true flavors of Malabar.
+                We specialize in traditional Kerala cuisine, especially Malabar biryani made the authentic way.
+                Our recipes are passed down through generations, using the freshest spices, marination, and
+                cooking techniques. Whether you're craving chicken biryani, seafood, or traditional Kerala
+                sides — we have it all.
+            </p>
+            <p>
+                Follow us on Instagram for latest photos and updates:
+                <a href="https://www.instagram.com/clubmalabari/" target="_blank">@clubmalabari</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Address</h5>
+                    <p>Sk Shop No.4, Katha No.7973, Chikkabellandur Krupanidhi College Road, Hobli, Mahadevapura,
+                        Varthur, Bengaluru, Karnataka 560037</p>
+                    <h5>Phone</h5>
+                    <p>+91 9535502668 </p>
+                    <h5>Email</h5>
+                    <p>info@clubmalabari.com</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Send us a message</h5>
+                    <form>
+                        <div class="mb-3">
+                            <label for="nameInput" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="nameInput" placeholder="Your name" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailInput" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailInput" placeholder="Your email" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="messageInput" class="form-label">Message</label>
+                            <textarea class="form-control" id="messageInput" rows="3"
+                                placeholder="Your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2025 Club Malabari. All rights reserved.</p>
+            <p>
+                Follow us:
+                <a href="https://www.instagram.com/clubmalabari/" target="_blank">Instagram</a>
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="./js/bootstrap.bundle.min.js" integrity="sha384-…"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
