@@ -44,5 +44,5 @@ jobs:
         # Enable push only after login is successful
         push: true
         
-        # IMPORTANT: Use the full repository path and tag from the environment variables
+        # IMPORTANT: Use the full repository path and tag from the environment 
         tags: club-malabari-web:latest
