@@ -45,4 +45,4 @@ jobs:
         push: true
         
         # IMPORTANT: Use the full repository path and tag from the environment 
-        tags: club-malabari-web:latest
+        tags: abhineshmathew/club-malabari-web:latest
