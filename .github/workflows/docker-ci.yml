@@ -7,7 +7,7 @@ on:
 
 # Define environment variables used throughout the workflow
 env:
-  DOCKER_REPO: abhineshmathew/club-malabari-web # REPLACE ME (e.g., myuser/my-nginx-app)
+  DOCKER_REPO: abhineshmathew/club-malabari-web
   IMAGE_TAG: latest
 
 jobs:
