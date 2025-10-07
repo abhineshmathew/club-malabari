@@ -31,4 +31,4 @@ jobs:
           push: true
           tags: ${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}
           # You can specify the Dockerfile path if it's not named 'Dockerfile'
-          # file: ./path/to/Dockerfile
+          file: ./web/Dockerfile
