@@ -1,0 +1,34 @@
+name: Docker CI/CD Build and Push
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ main ] # Trigger on pushes to the 'main' branch
+
+# Define environment variables used throughout the workflow
+env:
+  DOCKER_REPO: abhineshmathew/club-malabari-web # REPLACE ME (e.g., myuser/my-nginx-app)
+  IMAGE_TAG: latest
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} # Uses the GitHub Secret
+          password: ${{ secrets.DOCKER_PASSWORD }} # Uses the GitHub Secret
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: . # Looks for the Dockerfile in the root directory
+          push: true
+          tags: ${{ env.DOCKER_REPO }}:${{ env.IMAGE_TAG }}
+          # You can specify the Dockerfile path if it's not named 'Dockerfile'
+          # file: ./path/to/Dockerfile
