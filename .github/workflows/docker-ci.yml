@@ -27,7 +27,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: . # Looks for the Dockerfile in the root directory
+          context: ./web
           push: true
           tags: club-malabari-web:latest
           # You can specify the Dockerfile path if it's not named 'Dockerfile'
