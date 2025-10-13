@@ -1,3 +1,8 @@
+locals {
+  config_file     = filebase64("${path.module}/config.yml")
+  deployment_file = filebase64("${path.module}/deployment.yml")
+}
+
 # Configure the AWS Provider
 provider "aws" {
     region = "us-east-1"
@@ -64,20 +69,16 @@ resource "aws_instance" "kind_ec2" {
         chmod +x ./kind
         mv ./kind /usr/local/bin/kind
 
-        # Write your config file
-        cat <<EOT > /home/ubuntu/config.yml
-        ${file("${path.module}/config.yml")}
-        EOT
-        sudo chown ubuntu:ubuntu /home/ubuntu/config.yml
+        # Decode and write config.yml
+        echo "${local.config_file}" | base64 -d > /home/ubuntu/config.yml
+        chown ubuntu:ubuntu /home/ubuntu/config.yml
 
         # Create kind cluster as ubuntu user
         sudo -u ubuntu kind create cluster  --config /home/ubuntu/config.yml
 
-        # Write your deployment file
-        cat <<EOT > /home/ubuntu/deployment.yml
-        ${file("${path.module}/deployment.yml")}
-        EOT
-        sudo chown ubuntu:ubuntu /home/ubuntu/deployment.yml
+        # Decode and write deployment.yml
+        echo "${local.deployment_file}" | base64 -d > /home/ubuntu/deployment.yml
+        chown ubuntu:ubuntu /home/ubuntu/deployment.yml
 
         for i in {1..30}; do
             if sudo -u ubuntu kubectl get nodes &>/dev/null; then
