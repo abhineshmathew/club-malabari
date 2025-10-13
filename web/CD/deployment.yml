@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: club-malabari-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: club-malabari
+  template:
+    metadata:
+      labels:
+        app: club-malabari
+    spec:
+      containers:
+        - name: club-malabari-web
+          image: abhineshmathew/club-malabari-web:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: club-malabari-service
+spec:
+  selector:
+    app: club-malabari
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080
+  type: NodePort
