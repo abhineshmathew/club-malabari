@@ -89,23 +89,34 @@ resource "aws_instance" "kind_ec2" {
     echo "${local.config_file}" | base64 -d > /home/ubuntu/config.yml
     chown ubuntu:ubuntu /home/ubuntu/config.yml
 
-    # Create kind cluster as ubuntu user
-    sudo -u ubuntu kind create cluster --config /home/ubuntu/config.yml
+    # Create kind cluster as ubuntu
+    sudo -u ubuntu kind create cluster --config /home/ubuntu/config.yml --wait 300s
+
+    # Verify cluster readiness (wait up to 5 minutes)
+    for i in {1..30}; do
+        if sudo -u ubuntu kubectl get nodes &>/dev/null; then
+            echo "✅ Cluster ready!"
+            break
+        fi
+        echo "⏳ Waiting for cluster to be ready..."
+        sleep 10
+    done
 
     # Decode and write deployment.yml
     echo "${local.deployment_file}" | base64 -d > /home/ubuntu/deployment.yml
     chown ubuntu:ubuntu /home/ubuntu/deployment.yml
 
-    for i in {1..30}; do
-        if sudo -u ubuntu kubectl get nodes &>/dev/null; then
-            echo "Cluster ready!"
+    # Apply deployment with retries (handles API startup delay)
+    for i in {1..10}; do
+        if sudo -u ubuntu kubectl apply -f /home/ubuntu/deployment.yml; then
+            echo "✅ Deployment applied successfully!"
             break
+        else
+            echo "⚠️ Retry $i: Waiting for API to stabilize..."
+            sleep 15
         fi
-        echo "Waiting for cluster..."
-        sleep 10
     done
-
-    sudo -u ubuntu kubectl apply -f /home/ubuntu/deployment.yml
+    
   EOF
 
   tags = {
